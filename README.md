@@ -4,21 +4,20 @@ streamcatr
 Installation
 ------------
 
-1.  Install `devtools` if you haven't already.
+-   Install `devtools` if you haven't already.
 
 ``` r
 install.packages("devtool")
 ```
 
-1.  Using Windows? Install Rtools if you haven’t already.
-
--   Not sure?
+-   Using Windows? Install Rtools if you haven’t already.
+    -   Not sure?
 
 ``` r
 pkgbuild::has_build_tools()
 ```
 
-1.  Install `streamcatr` using `devtools`:
+-   Install `streamcatr` using `devtools`:
 
 ``` r
 devtools::install_github("cjcallag/streamcatr")
@@ -27,7 +26,7 @@ devtools::install_github("cjcallag/streamcatr")
 Accessing Data
 --------------
 
-Access the Streatcat data sets:
+Access the Streamcat data sets:
 
 ``` r
 df_list_state <- streamcatr::list_datasets("state")
@@ -76,3 +75,5 @@ df
     ## 10 718216      4.64         8.68        100       100                0
     ## # … with 65,958 more rows, and 3 more variables: PctAg2006Slp10Cat <dbl>,
     ## #   PctAg2006Slp20Ws <dbl>, PctAg2006Slp10Ws <dbl>
+
+You are now ready for data science! 🔥
