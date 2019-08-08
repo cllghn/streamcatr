@@ -2,7 +2,7 @@
 #'
 #' @author  Christopher Callaghan - cjcallaghan88@@gmail.com
 #'
-#' @param .data_provenance, A string containing one of the valid data sources: hydroregion, state, or epa.
+#' @param .data_provenance, A string containing one of the valid data sources: hydroregion or state.
 #'
 #' @importFrom dplyr case_when
 #' @importFrom RCurl getURL
@@ -10,7 +10,7 @@
 #'
 #' @export
 list_datasets <- function(.data_provenance) {
-  valid_provenance <- c("hydroregion", "state", "epa")
+  valid_provenance <- c("hydroregion", "state")
   if (!.data_provenance %in% valid_provenance) {
     stop("The .data_provenance provided is not valid, look at documentation.",
          call. = FALSE)
@@ -34,7 +34,7 @@ list_datasets <- function(.data_provenance) {
 #' @author  Christopher Callaghan - cjcallaghan88@@gmail.com
 #'
 #' @param .data_set, A string with the data set name, do not include the '.zip' extension.
-#' @param .data_provenance, A string containing one of the valid data sources: hydroregion, state, or epa.
+#' @param .data_provenance, A string containing one of the valid data sources: hydroregion or state.
 #'
 #' @importFrom dplyr case_when
 #' @importFrom RCurl getURL
@@ -45,7 +45,7 @@ list_datasets <- function(.data_provenance) {
 #'
 #' @export
 get_datasets <- function(.data_set, .data_provenance) {
-  valid_provenance <- c("hydroregion", "state", "epa")
+  valid_provenance <- c("hydroregion", "state")
   if (!.data_provenance %in% valid_provenance) {
     stop("The .data_provenance provided is not valid, look at documentation.",
          call. = FALSE)

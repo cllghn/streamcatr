@@ -7,7 +7,7 @@
 list_datasets(.data_provenance)
 }
 \arguments{
-\item{.data_provenance, }{A string containing one of the valid data sources: hydroregion, state, or epa.}
+\item{.data_provenance, }{A string containing one of the valid data sources: hydroregion or state.}
 }
 \description{
 List Available Streamcat Datasets by Provenance

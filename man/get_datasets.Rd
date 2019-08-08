@@ -9,7 +9,7 @@ get_datasets(.data_set, .data_provenance)
 \arguments{
 \item{.data_set, }{A string with the data set name, do not include the '.zip' extension.}
 
-\item{.data_provenance, }{A string containing one of the valid data sources: hydroregion, state, or epa.}
+\item{.data_provenance, }{A string containing one of the valid data sources: hydroregion or state.}
 }
 \description{
 Get Data Set from Specific Provenance
