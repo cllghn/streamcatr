@@ -38,7 +38,7 @@ df_list_state <- streamcatr::list_datasets("state")
 head(df_list_state)
 ```
 
-Read in specific data sets:
+Read specific data sets:
 
 ```{r}
 df <- streamcatr::get_datasets("AgMidHiSlopes_Region01", "state")

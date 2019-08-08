@@ -37,7 +37,7 @@ head(df_list_state)
     ## [3] "AgMidHiSlopes_Region03N.zip" "AgMidHiSlopes_Region03S.zip"
     ## [5] "AgMidHiSlopes_Region03W.zip" "AgMidHiSlopes_Region04.zip"
 
-Read in specific data sets:
+Read specific data sets:
 
 ``` r
 df <- streamcatr::get_datasets("AgMidHiSlopes_Region01", "state")
