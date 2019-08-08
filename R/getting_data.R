@@ -40,7 +40,7 @@ list_datasets <- function(.data_provenance) {
 #' @importFrom RCurl getURL
 #' @importFrom curl curl_download
 #' @importFrom magrittr %>%
-#' @importFrom purrrr map_df
+#' @importFrom purrr map_df
 #' @importFrom readr read_csv
 #'
 #' @export
@@ -75,6 +75,7 @@ get_datasets <- function(.data_set, .data_provenance) {
   target_file <- dir(temp_dir, pattern = "\\.csv$", full.names = TRUE)
   df <- read_csv(target_file)
   
+  unlink(temp_path_zip)
   df
 }
 

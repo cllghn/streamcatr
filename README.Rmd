@@ -1,0 +1,44 @@
+---
+title: "streamcatr"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Installation
+
+1. Install `devtools` if you haven't already.
+
+```{r, eval=FALSE}
+install.packages("devtool")
+```
+
+2. Using Windows? Install Rtools if you haven’t already.   
+  - Not sure? 
+
+```{r, eval=FALSE}
+pkgbuild::has_build_tools()
+```
+
+3. Install `streamcatr` using `devtools`:
+```{r, eval=FALSE}
+devtools::install_github("cjcallag/streamcatr")
+```
+
+
+## Accessing Data
+
+Access the Streatcat data sets:
+```{r}
+df_list_state <- streamcatr::list_datasets("state")
+head(df_list_state)
+```
+
+Read in specific data sets:
+```{r}
+df <- streamcatr::get_datasets("AgMidHiSlopes_Region01", "state")
+df
+```
+
