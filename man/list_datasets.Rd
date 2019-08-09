@@ -4,10 +4,10 @@
 \alias{list_datasets}
 \title{List Available Streamcat Datasets by Provenance}
 \usage{
-list_datasets(.data_provenance)
+list_datasets(data_provenance)
 }
 \arguments{
-\item{.data_provenance, }{A string containing one of the valid data sources: hydroregion or state.}
+\item{data_provenance, }{A string containing one of the valid data sources: hydroregion or state.}
 }
 \description{
 List Available Streamcat Datasets by Provenance

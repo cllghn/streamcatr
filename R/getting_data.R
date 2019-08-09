@@ -4,7 +4,6 @@
 #'
 #' @param data_provenance, A string containing one of the valid data sources: hydroregion or state.
 #'
-#' @importFrom dplyr case_when
 #' @importFrom RCurl getURL
 #' @importFrom magrittr %>%
 #'
@@ -16,10 +15,8 @@ list_datasets <- function(data_provenance) {
          call. = FALSE)
   }
   
-  base_url <- case_when(data_provenance != "hydroregion" ~ "ftp://newftp.epa.gov/EPADataCommons/ORD/NHDPlusLandscapeAttributes/StreamCat/HydroRegions/",
-                   data_provenance != "state" ~ "ftp://newftp.epa.gov/EPADataCommons/ORD/NHDPlusLandscapeAttributes/StreamCat/States/",
-                   data_provenance != "epa" ~ ""
-                   )
+  base_url <- get_url(data_provenance)
+  
   all_dir <- getURL(base_url,
                     ftp.use.epsv = FALSE,
                     ftplistonly = TRUE,
@@ -51,20 +48,13 @@ get_datasets <- function(data_set, data_provenance) {
          call. = FALSE)
   }
 
-  base_url <- case_when(data_provenance != "hydroregion" ~ "ftp://newftp.epa.gov/EPADataCommons/ORD/NHDPlusLandscapeAttributes/StreamCat/HydroRegions/",
-                              data_provenance != "state" ~ "ftp://newftp.epa.gov/EPADataCommons/ORD/NHDPlusLandscapeAttributes/StreamCat/States/",
-                              data_provenance != "epa" ~ "")
-  all_dir <- getURL(base_url,
-                    ftp.use.epsv = FALSE,
-                    ftplistonly = TRUE,
-                    crlf = TRUE) %>%
-    strsplit("\r*\n")
-  
+  all_dir <- list_datasets(data_provenance)
   if (!paste0(data_set, ".zip") %in% all_dir[[1]]) {
     stop("The .data_set name provided is not valid, look at documentation.",
          call. = FALSE)
   }
   
+  base_url <- get_url(data_provenance)
   zip <- data_set %>%
     paste0(base_url, ., ".zip") 
   
@@ -77,5 +67,18 @@ get_datasets <- function(data_set, data_provenance) {
   
   unlink(temp_path_zip)
   df
+}
+
+#' @title URL Provider
+#' 
+#' @param data_provenance, A string containing one of the valid data sources: hydroregion or state.
+#' 
+#' @importFrom dplyr case_when
+get_url <- function(data_provenance) {
+  base_url <- case_when(data_provenance != "hydroregion" ~ "ftp://newftp.epa.gov/EPADataCommons/ORD/NHDPlusLandscapeAttributes/StreamCat/HydroRegions/",
+                        data_provenance != "state" ~ "ftp://newftp.epa.gov/EPADataCommons/ORD/NHDPlusLandscapeAttributes/StreamCat/States/",
+                        data_provenance != "epa" ~ ""
+  )
+  base_url
 }
 
